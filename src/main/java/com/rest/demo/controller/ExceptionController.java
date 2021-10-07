@@ -14,6 +14,7 @@ public class ExceptionController {
     {
         return new ResponseEntity<String >("Entered valueType is not present is Database", HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(EmptyInputException.class)
     public ResponseEntity<String> handleEmptyInput(EmptyInputException emptyInputException)
     {

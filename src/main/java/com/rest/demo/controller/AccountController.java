@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -60,6 +59,7 @@ public class AccountController {
 
         return new ResponseEntity<Account>(account, HttpStatus.CREATED);
     }
+
     @GetMapping("/accounts")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Account> getAccounts()
@@ -76,6 +76,7 @@ public class AccountController {
             throw new NullPointerException("Account not present");
         return accountRepo.findById(accountNumber);
     }
+
     @DeleteMapping("/accounts")
     public JSONObject deleteAccounts()
     {
@@ -86,6 +87,7 @@ public class AccountController {
         json.put("Status","Success");
         return json;
     }
+
     @DeleteMapping("/accounts/{accountNumber}")
     public JSONObject deleteAccounts(@PathVariable("accountNumber") long accountNumber)
     {
@@ -97,6 +99,7 @@ public class AccountController {
         json.put("Status","Success");
         return json;
     }
+
     @PutMapping("/accounts")
     public Account saveOrUpdate(@RequestBody Account account)
     {
@@ -105,7 +108,6 @@ public class AccountController {
         long time = currentTime.getTime();
         if(account==null)
             throw new NullPointerException();
-
 
         boolean exists=accountRepo.existsById(account.getAccountNumber());
 

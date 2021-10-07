@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface TransactionRepo extends JpaRepository<Transaction,Long> {
+
     @Query("select t from Transaction t where t.accountNumber= ?1 and t.transactionDate between ?2 and ?3")
     public List<Transaction> findTransactionsByAccountNumber(long accountNumber, Timestamp fromDate,Timestamp toDate);
 

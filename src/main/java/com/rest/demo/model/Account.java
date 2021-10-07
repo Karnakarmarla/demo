@@ -28,16 +28,17 @@ public class Account {
     public Account() {
     }
 
-    public Account(String accountHolder, Date dob, String accountType, int transactionFee, Timestamp createdAt, Timestamp updatedAt, long balance) {
+    public Account(long accountNumber, String accountHolder, Date dob, String accountType, int transactionFee, Timestamp createdAt, Timestamp updatedAt, List<Transaction> transactions, long balance) {
+        this.accountNumber = accountNumber;
         this.accountHolder = accountHolder;
         this.dob = dob;
         this.accountType = accountType;
         this.transactionFee = transactionFee;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.transactions = transactions;
         this.balance = balance;
     }
-
 
     public long getAccountNumber() {
         return accountNumber;
